@@ -25,7 +25,8 @@ anexos = []
 
 for link in soup.find_all("a", href=True):
     if "Anexo I" in link.text or "Anexo II" in link.text:
-        anexos.append(link["href"])
+        if link["href"].endswith(".pdf"):
+            anexos.append(link["href"])
 
 #Se caso não encontrar links, interrompera
 if not anexos:
